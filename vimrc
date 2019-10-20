@@ -1,12 +1,15 @@
-" 设置vim颜色
-syntax enable
-colorscheme monokai
-"colorscheme desert
-" 你在此设置运行时路径
+" 启动界面
+set shortmess=atI
+
+" 设置不同termianal的复制粘贴
+set clipboard=unnamed
+
+" 设置运行时路径
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " 在这里面输入安装的插件
 " Vundle 本身就是一个插件
+Plugin 'ayu-theme/ayu-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'git://github.com/scrooloose/nerdtree.git'    "nerdtree 树形文件夹
 Plugin 'Valloric/YouCompleteMe' "YouCompleteMe 补全
@@ -16,9 +19,18 @@ Plugin 'airblade/vim-gitgutter' "git实时显示更改
 Plugin 'bling/vim-airline' " statusline显示
 Plugin 'vim-airline/vim-airline-themes' "airline主题
 "Plugin 'terryma/vim-multiple-cursors' "多重选取
+Plugin 'morhetz/gruvbox'
 
 "所有插件都应该在这一行之前
 call vundle#end()
+
+" 设置vim主题
+syntax enable
+"colorscheme monokai
+"colorscheme desert
+colorscheme gruvbox
+set background=dark
+"set background=light "dark or light
 
 " nerdtree config
 map <F2> :NERDTreeToggle<CR>  
@@ -68,19 +80,19 @@ set backspace=2
 
 " youcomplete跨文件查询，然后ctrl+o回到光标处
 map <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_completion = 1 "补全后自动关闭preview
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 	|
     \ set softtabstop=4	|
     \ set shiftwidth=4	|
-    \ set textwidth=79	|
     \ set expandtab	|
     \ set autoindent	|
     \ set fileformat=unix
 
 au BufNewFile,BufRead *.html
     \ set tabstop=4	|
-    \ set softtabstop=	|
+    \ set softtabstop=4	|
     \ set shiftwidth=4	|
     \ set expandtab	|
     \ set autoindent
@@ -92,10 +104,10 @@ au BufNewFile,BufRead *.js
     \ set expandtab	|
     \ set autoindent
 
-au BufNewFile,BufRead *.htm
-    \ set tabstop=4	|
-    \ set softtabstop=4	|
-    \ set shiftwidth=4	|
+au BufNewFile,BufRead *.css
+    \ set tabstop=2	|
+    \ set softtabstop=2	|
+    \ set shiftwidth=2	|
     \ set expandtab	|
     \ set autoindent
 
